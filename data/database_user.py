@@ -6,20 +6,17 @@ from data.Defs import User
 
 
 class Database:
-
+    
+    def __init__(self): 
+        self.dct_db = pymysql.connect(
+        db="sys",
+        host="dkssik12.ch80vdihvl1x.ap-northeast-2.rds.amazonaws.com",
+        port = 3306,
+        user="gamego",
+        passwd="pygamemaking",
+        charset = 'utf8'
+        )
         self.salt = bcrypt.gensalt()
-
-    def id_not_exists(self, input_id):
-        # Dictionary cursor -> row 결과를 dictionary 형태로 리턴
-        curs = self.dct_db.cursor(pymysql.cursors.DictCursor)
-        sql = "SELECT * FROM users1 WHERE user_id=%s"
-        curs.execute(sql, input_id)  # input_id 데이터를 서버에 전송
-        data = curs.fetchone()
-        curs.close()
-        if data:
-            return False
-        else:
-            return True
 
     def match_idpw(self, id, pw):  # 아이디와 비번이 일치하는지 비교
         input_password = pw

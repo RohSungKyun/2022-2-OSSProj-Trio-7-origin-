@@ -74,7 +74,7 @@ class pvp:
         self.startTime = time.time()
         self.mob_gen_rate = 0.01
         self.mob_velocity = 2
-        self.mob_image = "./Image/policeCharacters/policeStage_monster.png"
+        self.mob_image = "./Image/policeCharacters/policeStage_boss2.png"
         #self.background_image = stage.background_image
         self.background_image = "Image/background/police_background.png"
         self.gameover_image1 = "Image/catthema/win1_.png"
