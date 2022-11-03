@@ -6,7 +6,10 @@ from data.Defs import User
 
 
 class Database:
+<<<<<<< HEAD
     
+=======
+>>>>>>> f0763c8871925cd74d9c2b7fdeed14173a6ece5e
     def __init__(self): 
         self.dct_db = pymysql.connect(
         db="sys",
@@ -36,6 +39,10 @@ class Database:
         return check_password
 
 
+<<<<<<< HEAD
+=======
+    def add_id(self, user_id): #아이디 추가
+>>>>>>> f0763c8871925cd74d9c2b7fdeed14173a6ece5e
         curs = self.dct_db.cursor()
         # users테이블에서 user_id 필드에 %s의 값을 삽입
         sql = "INSERT INTO users1 (user_id) VALUES (%s)"
@@ -52,7 +59,17 @@ class Database:
     def add_pw(self, user_pw, user_id):  # 비밀번호 & coin 초기값 추가 * 캐릭터 초기값은 1로(캐릭터 숫자로 표현)
         initial_coin = 0  # 가입시, 보유한 coin 0으로 설정
         initial_character = 0
+<<<<<<< HEAD
 
+=======
+        hashed_pw = bcrypt.hashpw(user_pw.encode(
+            'utf-8'), bcrypt.gensalt()).decode('utf-8')
+        # print(hashed_pw, "입력값")
+        curs = self.dct_db.cursor()
+        sql = "UPDATE users1 SET user_password=%s WHERE user_id=%s"
+        curs.execute(sql, (hashed_pw, user_id))
+        # print(hashed_pw, "라라")
+>>>>>>> f0763c8871925cd74d9c2b7fdeed14173a6ece5e
         self.dct_db.commit()
         curs = self.dct_db.cursor()
         sql = "UPDATE users2 SET user_coin=%s WHERE user_id=%s"
